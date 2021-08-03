@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/jackskj/carta/value"
+	"github.com/pmaccamp/carta/value"
 )
 
 func (m *Mapper) loadRows(rows *sql.Rows, colTyps []*sql.ColumnType) (*resolver, error) {

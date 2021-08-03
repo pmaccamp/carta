@@ -1,11 +1,11 @@
 package value
 
 import (
-	"database/sql"
 	"reflect"
 	"time"
 
 	"github.com/golang/protobuf/ptypes/timestamp"
+	"github.com/guregu/null"
 )
 
 // Value represents go data types which carta supports for loading as well as what data types arrive from the sql driver
@@ -59,21 +59,19 @@ var BasicKinds = map[reflect.Kind]Value{
 var BasicTypes = map[reflect.Type]Value{
 	reflect.TypeOf(time.Time{}):           Time,
 	reflect.TypeOf(timestamp.Timestamp{}): Timestamp,
-	reflect.TypeOf(sql.NullBool{}):        NullBool,
-	reflect.TypeOf(sql.NullFloat64{}):     NullFloat64,
-	reflect.TypeOf(sql.NullInt32{}):       NullInt32,
-	reflect.TypeOf(sql.NullInt64{}):       NullInt64,
-	reflect.TypeOf(sql.NullString{}):      NullString,
-	reflect.TypeOf(sql.NullTime{}):        NullTime,
+	reflect.TypeOf(null.Bool{}):           NullBool,
+	reflect.TypeOf(null.Float{}):          NullFloat64,
+	reflect.TypeOf(null.Int{}):            NullInt32,
+	reflect.TypeOf(null.String{}):         NullString,
+	reflect.TypeOf(null.Time{}):           NullTime,
 }
 
 var NullableTypes = map[reflect.Type]Value{
-	reflect.TypeOf(sql.NullBool{}):    NullBool,
-	reflect.TypeOf(sql.NullFloat64{}): NullFloat64,
-	reflect.TypeOf(sql.NullInt32{}):   NullInt32,
-	reflect.TypeOf(sql.NullInt64{}):   NullInt64,
-	reflect.TypeOf(sql.NullString{}):  NullString,
-	reflect.TypeOf(sql.NullTime{}):    NullTime,
+	reflect.TypeOf(null.Bool{}):   NullBool,
+	reflect.TypeOf(null.Float{}):  NullFloat64,
+	reflect.TypeOf(null.Int{}):    NullInt32,
+	reflect.TypeOf(null.String{}): NullString,
+	reflect.TypeOf(null.Time{}):   NullTime,
 }
 
 // Map of database data types to go types

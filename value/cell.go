@@ -1,9 +1,9 @@
 package value
 
 import (
-	"database/sql"
 	"errors"
 	"fmt"
+	"github.com/guregu/null"
 	"log"
 	"math"
 	"reflect"
@@ -208,70 +208,52 @@ func (c Cell) Timestamp() (timestamp.Timestamp, error) {
 	}
 }
 
-func (c Cell) NullBool() (sql.NullBool, error) {
+func (c Cell) NullBool() (null.Bool, error) {
 	if !c.valid {
-		return sql.NullBool{}, nil
+		return null.Bool{}, nil
 	}
 	d, err := c.Bool()
-	return sql.NullBool{
-		Bool:  d,
-		Valid: true,
-	}, err
+	return null.BoolFrom(d), err
 }
 
-func (c Cell) NullFloat64() (sql.NullFloat64, error) {
+func (c Cell) NullFloat64() (null.Float, error) {
 	if !c.valid {
-		return sql.NullFloat64{}, nil
+		return null.Float{}, nil
 	}
 	d, err := c.Float64()
-	return sql.NullFloat64{
-		Float64: d,
-		Valid:   true,
-	}, err
+	return null.FloatFrom(d), err
 }
 
-func (c Cell) NullInt32() (sql.NullInt32, error) {
+func (c Cell) NullInt32() (null.Int, error) {
 	if !c.valid {
-		return sql.NullInt32{}, nil
+		return null.Int{}, nil
 	}
 	d, err := c.Int32()
-	return sql.NullInt32{
-		Int32: d,
-		Valid: true,
-	}, err
+	return null.IntFrom(int64(d)), err
 }
 
-func (c Cell) NullInt64() (sql.NullInt64, error) {
+func (c Cell) NullInt64() (null.Int, error) {
 	if !c.valid {
-		return sql.NullInt64{}, nil
+		return null.Int{}, nil
 	}
 	d, err := c.Int64()
-	return sql.NullInt64{
-		Int64: d,
-		Valid: true,
-	}, err
+	return null.IntFrom(d), err
 }
 
-func (c Cell) NullString() (sql.NullString, error) {
+func (c Cell) NullString() (null.String, error) {
 	if !c.valid {
-		return sql.NullString{}, nil
+		return null.String{}, nil
 	}
 	d, err := c.String()
-	return sql.NullString{
-		String: d,
-		Valid:  true,
-	}, err
+	return null.StringFrom(d), err
 }
 
-func (c Cell) NullTime() (sql.NullTime, error) {
+func (c Cell) NullTime() (null.Time, error) {
 	if !c.valid {
-		return sql.NullTime{}, nil
+		return null.Time{}, nil
 	}
 	d, err := c.Time()
-	return sql.NullTime{
-		Time:  d,
-		Valid: true,
-	}, err
+	return null.TimeFrom(d), err
 }
 
 func (c Cell) AsInterface() (interface{}, error) {
