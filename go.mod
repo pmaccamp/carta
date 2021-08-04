@@ -9,7 +9,7 @@ require (
 	github.com/guregu/null v4.0.0+incompatible
 	github.com/huandu/xstrings v1.3.1 // indirect
 	github.com/imdario/mergo v0.3.9 // indirect
-	github.com/jackskj/protoc-gen-map v0.4.1
+	github.com/pmaccamp/protoc-gen-map v0.5.0
 	github.com/k0kubun/colorstring v0.0.0-20150214042306-9440f1994b88 // indirect
 	github.com/lib/pq v1.6.0
 	github.com/onsi/gomega v1.14.0 // indirect
