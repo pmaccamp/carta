@@ -212,7 +212,7 @@ func findSubMaps(t reflect.Type) (map[fieldIndex]*Mapper, error) {
 	}
 	for i := 0; i < t.NumField(); i++ {
 		field := t.Field(i)
-		if isExported(field) && isSubMap(field.Type) {
+		if isExported(field) && isSubMap(field.Type) && field.Tag.Get("db") != "-" {
 			if subMap, err = newMapper(field.Type); err != nil {
 				return nil, err
 			}
